@@ -2,21 +2,28 @@
   (:gen-class))
 
 (defn -main
-  "I don't do a whole lot ... yet."
+  "Simple Calculator App"
   [& args]
 
-  (def value
-  (+ 1 2 3 4 5 6 7 8 9 10)
-  )
+  (println "Enter a number to pick operation: ")
+  (println "1. Addition")
+  (println "2. Subtraction")
+  (println "3. Multiplication")
+  (println "4. Division")
 
-  (println "The value is: " value)
-
-  (if (> value 10)
-    (do
-      (println "Value is greater than 10")
-      (println "The bool is: " (> value 10)))
-    (do
-    (println "Value is less than or equal to 10")
-    (println "The bool is: " (> value 10)))
-  )
+  (let [operation (read-line)]
+    (println "Enter first number:")
+      (let [num1 (Integer/parseInt(read-line))]
+        (println "Enter second number:")
+        (let [num2 (Integer/parseInt(read-line))]
+          (cond
+            (= operation "1") (println "Result: " (+ num1 num2))
+            (= operation "2") (println "Result: " (- num1 num2))
+            (= operation "3") (println "Result: " (* num1 num2))
+            (= operation "4") (println "Result: " (/ num1 num2))
+            :else (println "Invalid operation")
+          )
+        )
+      )
+    )
 )
